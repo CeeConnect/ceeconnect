@@ -1,0 +1,43 @@
+$id: https://schemas.ceeconnect/bundles/simulation/operation
+$schema: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/meta-schema
+title: Opération d'économies d'énergie
+type: object
+properties:
+  fiche:
+    $ref: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/enums/fiche
+    title: Fiche d'opération standardisée
+  bonification:
+    title: Bonification
+    type: [string, "null"]
+    oneOf:
+      - type: string
+        $ref: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/enums/bonification
+      - type: "null"
+  dateEngagement:
+    title: Date d'engagement de l'opération
+    type: string
+    format: date
+  precarite:
+    title: Précarité énergétique
+    type: [object, "null"]
+    oneOf:
+      - $ref: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/simulation/precarite
+      - type: "null"
+required:
+  - fiche
+  - bonification
+  - dateEngagement
+  - precarite
+allOf:
+  # Fiches d'opération standardisée
+  - $ref: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/simulation/operation_fiche
+  # Bonifications
+  - if:
+      properties:
+        bonification:
+          $ref: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/enums/bonification
+      required:
+        - bonification
+    then:
+      allOf:
+        - $ref: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/simulation/operation_bonification

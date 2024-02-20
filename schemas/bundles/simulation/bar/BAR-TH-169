@@ -1,0 +1,85 @@
+$id: https://schemas.ceeconnect.fr/bundles/simulation/bar/BAR-TH-169
+$schema: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/meta-schema
+title: BAR-TH-169
+type: object
+properties:
+  fiche:
+    $ref: >-
+      https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/bar/BAR-TH-169#/properties/fiche
+  dateEngagement:
+    $ref: >-
+      https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/bar/BAR-TH-169#/properties/dateEngagement
+  adresse:
+    $ref: >-
+      https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/bar/BAR-TH-169#/properties/adresse
+required:
+  - fiche
+  - dateEngagement
+  - adresse
+allOf:
+  - if:
+      properties:
+        dateEngagement:
+          $ref: >-
+            https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/bar/BAR-TH-169#/allOf/0/if/properties/dateEngagement
+      required:
+        - dateEngagement
+    then:
+      allOf:
+        - $ref: '#/$defs/BAR-TH-169v46-1'
+$defs:
+  BAR-TH-169v46-1:
+    $id: https://schemas.ceeconnect.fr/bundles/simulation/bar/BAR-TH-169v46-1
+    $schema: https://json-schema.org/draft/2020-12/schema
+    title: BAR-TH-169v46-1
+    type: object
+    properties:
+      description:
+        title: Caractéristiques
+        type: object
+        properties:
+          typeBatiment:
+            $ref: >-
+              https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/bar/BAR-TH-169#/$defs/BAR-TH-169v46-1/properties/description/properties/typeBatiment
+          ancienneteBatiment:
+            $ref: >-
+              https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/bar/BAR-TH-169#/$defs/BAR-TH-169v46-1/properties/description/properties/ancienneteBatiment
+          logements:
+            $ref: >-
+              https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/bar/BAR-TH-169#/$defs/BAR-TH-169v46-1/properties/description/properties/logements
+          equipements:
+            title: Liste des équipements installés
+            type: array
+            minItems: 1
+            items:
+              type: object
+              properties:
+                performanceEnergetique:
+                  $ref: >-
+                    https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/bar/BAR-TH-169#/$defs/BAR-TH-169v46-1/properties/description/properties/equipements/items/properties/performanceEnergetique
+                tauxCouverture:
+                  $ref: >-
+                    https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/bar/BAR-TH-169#/$defs/BAR-TH-169v46-1/properties/description/properties/equipements/items/properties/tauxCouverture
+              required:
+                - performanceEnergetique
+                - tauxCouverture
+        required:
+          - typeBatiment
+          - ancienneteBatiment
+          - logements
+          - equipements
+    required:
+      - description
+examples:
+  - fiche: BAR-TH-169
+    dateEngagement: '2024-01-01'
+    adresse:
+      $ref: >-
+        https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/mixins/adresse#/examples/0
+    description:
+      typeBatiment: IMMEUBLE
+      ancienneteBatiment: EXISTANT
+      logements: 10
+      equipements:
+        - performanceEnergetique: 3
+          tauxCouverture: 80

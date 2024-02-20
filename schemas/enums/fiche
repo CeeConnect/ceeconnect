@@ -1,0 +1,84 @@
+$id: https://schemas.ceeconnect.fr/enums/fiche
+title: Fiche d'opération standardisée
+type: string
+oneOf:
+  - const: BAR-EN-101
+  - const: BAR-EN-102
+  - const: BAR-EN-103
+  - const: BAR-EN-104
+  - const: BAR-EN-105
+  - const: BAR-EN-106
+  - const: BAR-EN-107
+  - const: BAR-EN-108
+  - const: BAR-EN-109
+  - const: BAR-EQ-110
+  - const: BAR-EQ-115
+  - const: BAR-SE-104
+  - const: BAR-SE-105
+  - const: BAR-SE-106
+  - const: BAR-SE-107
+  - const: BAR-SE-108
+  - const: BAR-SE-109
+  - const: BAR-TH-101
+  - const: BAR-TH-102
+  - const: BAR-TH-104
+  - const: BAR-TH-106
+  - const: BAR-TH-107-SE
+  - const: BAR-TH-107
+  - const: BAR-TH-110
+  - const: BAR-TH-111
+  - const: BAR-TH-112
+  - const: BAR-TH-113
+  - const: BAR-TH-116
+  - const: BAR-TH-117
+  - const: BAR-TH-118
+  - const: BAR-TH-122
+  - const: BAR-TH-123
+  - const: BAR-TH-124
+  - const: BAR-TH-125
+  - const: BAR-TH-127
+  - const: BAR-TH-129
+  - const: BAR-TH-130
+  - const: BAR-TH-135
+  - const: BAR-TH-137
+  - const: BAR-TH-139
+  - const: BAR-TH-141
+  - const: BAR-TH-143
+  - const: BAR-TH-145
+  - const: BAR-TH-148
+  - const: BAR-TH-150
+  - const: BAR-TH-155
+  - const: BAR-TH-158
+  - const: BAR-TH-159
+  - const: BAR-TH-160
+  - const: BAR-TH-161
+  - const: BAR-TH-162
+  - const: BAR-TH-163
+  - const: BAR-TH-164
+  - const: BAR-TH-165
+  - const: BAR-TH-166
+  - const: BAR-TH-167
+  - const: BAR-TH-168
+  - const: BAR-TH-169
+  - const: BAR-TH-170
+  - const: BAR-TH-171
+  - const: BAR-TH-172
+$defs:
+  agri:
+    type: string
+    pattern: (AGRI)[-](BA|CH|EC|EN|EQ|SE|TH|UT)[-][0-9]+([-]SE)
+  bar:
+    type: string
+    pattern: (BAR)[-](BA|CH|EC|EN|EQ|SE|TH|UT)[-][0-9]+([-]SE)
+  bat:
+    type: string
+    pattern: (BAT)[-](BA|CH|EC|EN|EQ|SE|TH|UT)[-][0-9]+([-]SE)
+  ind:
+    type: string
+    pattern: (IND)[-](BA|CH|EC|EN|EQ|SE|TH|UT)[-][0-9]+([-]SE)
+  res:
+    type: string
+    pattern: (RES)[-](BA|CH|EC|EN|EQ|SE|TH|UT)[-][0-9]+([-]SE)
+  tra:
+    type: string
+    pattern: (TRA)[-](BA|CH|EC|EN|EQ|SE|TH|UT)[-][0-9]+([-]SE)

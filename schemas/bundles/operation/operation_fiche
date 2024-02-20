@@ -1,0 +1,25 @@
+$id: https://schemas.ceeconnect.com/bundles/operation/operation_fiche
+$schema: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/meta-schema
+type: object
+properties:
+  fiche:
+    $ref: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/enums/fiche
+    title: Fiche d'opération standardisée
+  dateEngagement:
+    title: Date d'engagement de l'opération
+    type: string
+    format: date
+required:
+  - fiche
+  - dateEngagement
+# Sous-schémas par secteur d'application
+oneOf:
+  - type: object
+    properties:
+      fiche:
+        type: string
+        pattern: ^BAR[-].+$
+    required:
+      - fiche
+    allOf:
+      - $ref: https://raw.githubusercontent.com/ceeconnect/ceeconnect/main/schemas/bundles/operation/operation_bar
